@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include nav.html %}
+    <main class="container">
+      {{ content }}
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <small>&copy; {{ "now" | date: "%Y" }} {{ site.title }} · Built with Jekyll & GitHub Pages</small>
+      </div>
+    </footer>
+  </body>
+</html>

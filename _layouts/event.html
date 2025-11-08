@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="card">
+  <h1 class="title">{{ page.title }}</h1>
+  <p class="meta">
+    {% if page.date %}<strong>Date:</strong> {{ page.date | date: "%b %d, %Y" }}{% endif %}<br>
+    {% if page.time %}<strong>Time:</strong> {{ page.time }}{% endif %}<br>
+    {% if page.location %}<strong>Location:</strong> {{ page.location }}{% endif %}
+  </p>
+
+  {% if page.details %}
+  <div class="prose">{{ page.details | markdownify }}</div>
+  {% endif %}
+
+  {% if page.links %}
+  <div class="quick-links">
+    {% for l in page.links %}
+      <a class="btn" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</article>

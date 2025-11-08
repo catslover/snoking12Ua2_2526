@@ -1,0 +1,33 @@
+title: Sno-King 12U A2 Tournaments
+description: Clean, mobile-first hub for tournaments and team events
+baseurl: ""
+url: ""
+timezone: America/Los_Angeles
+
+collections:
+  tournaments:
+    output: true
+    permalink: /tournaments/:name/
+  events:
+    output: true
+    permalink: /events/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "tournaments"
+    values:
+      layout: tournament
+  - scope:
+      path: ""
+      type: "events"
+    values:
+      layout: event
+
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: pretty
+
+exclude:
+  - README.md

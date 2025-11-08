@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<article class="card">
+  <h1 class="title">{{ page.title }}</h1>
+  <p class="meta">
+    <strong>Dates:</strong> {{ page.start_date | date: "%b %d, %Y" }}{% if page.end_date %}–{{ page.end_date | date: "%b %d, %Y" }}{% endif %}<br>
+    {% if page.location %}<strong>Location:</strong> {{ page.location }}<br>{% endif %}
+    {% if page.venue %}<strong>Venue:</strong> {{ page.venue }}<br>{% endif %}
+    {% if page.division %}<strong>Division:</strong> {{ page.division }}{% endif %}
+  </p>
+
+  {% if page.status %}
+  <div class="badge {{ page.status | downcase | replace: ' ', '-' }}">{{ page.status }}</div>
+  {% endif %}
+
+  {% if page.schedule_url or page.hotel or page.docs %}
+  <div class="quick-links">
+    {% if page.schedule_url %}<a class="btn" href="{{ page.schedule_url }}" target="_blank" rel="noopener">Schedule</a>{% endif %}
+    {% if page.hotel and page.hotel.url %}<a class="btn" href="{{ page.hotel.url }}" target="_blank" rel="noopener">Hotel</a>{% endif %}
+    {% if page.docs %}
+      {% for d in page.docs %}
+        <a class="btn" href="{{ d.url }}" target="_blank" rel="noopener">{{ d.label }}</a>
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if page.notes %}
+  <h2>Notes</h2>
+  <div class="prose">{{ page.notes | markdownify }}</div>
+  {% endif %}
+
+  {% if page.checklist %}
+  <h2>Checklist</h2>
+  <ul class="checklist">
+    {% for item in page.checklist %}
+      <li>{% if item.done %}✅{% else %}⬜{% endif %} {{ item.text }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</article>
